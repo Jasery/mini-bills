@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "wux-icon": "../../components/wux//icon/index",
+        "wux-button": "../../components/wux/button/index"
+    }
+}

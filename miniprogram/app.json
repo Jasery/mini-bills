@@ -1,0 +1,44 @@
+{
+    "pages": [
+        "pages/bills/bills",
+        "pages/group/group",
+        "pages/statistics/statistics",
+        "pages/my/my",
+        "pages/index/index",
+        "pages/userConsole/userConsole",
+        "pages/storageConsole/storageConsole",
+        "pages/databaseGuide/databaseGuide",
+        "pages/addFunction/addFunction",
+        "pages/deployFunctions/deployFunctions",
+        "pages/chooseLib/chooseLib",
+        "pages/authorization/authorizaion"
+    ],
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F6F6F6",
+        "navigationBarTitleText": "云开发 QuickStart",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#377bfd",
+        "selectedColor": "#81868c",
+        "list": [{
+                "pagePath": "pages/bills/bills",
+                "text": "账单"
+            },
+            {
+                "pagePath": "pages/group/group",
+                "text": "群组"
+            },
+            {
+                "pagePath": "pages/statistics/statistics",
+                "text": "统计"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的"
+            }
+        ]
+    }
+}

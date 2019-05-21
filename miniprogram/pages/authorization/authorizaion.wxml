@@ -1,0 +1,12 @@
+<view class='main'>
+    <view class='title'>Authorization</view>
+    <view class='title'>授权申请</view>
+</view>
+<view class='desc'>
+    <view class='msg'>申请获得您的公开信息（昵称、头像等），</view>
+    <view class="msg">用于完成记账功能，拒绝则无法使用本软件。</view>
+</view>
+<view class="btn">
+        <wux-button block type="positive"  open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">申请授权</wux-button>
+    <!-- <wux-button open-type="getUserInfo">申请授权</wux-button> -->
+</view>
