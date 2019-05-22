@@ -22,8 +22,10 @@ Page({
         console.log(res)
         if (res.detail && res.detail.userInfo) {
             wx.setStorageSync('userInfo', res.detail.userInfo);
+            console.log('before regist')
             register(res.detail.userInfo)
                 .then(res => {
+                    wx.setStorageSync('userId', res._id)
                     wx.navigateBack({ delta: 1 })
                 })
                 .catch(err => {

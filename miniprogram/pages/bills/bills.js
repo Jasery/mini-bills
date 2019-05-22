@@ -1,4 +1,6 @@
 // miniprogram/pages/bills/bills.js
+const app = getApp()
+
 Page({
 
     /**
@@ -12,13 +14,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
-        wx.pro.getSetting()
+        console.log('on bill page load')
+        console.log(app)
+        app.globalData.loginPromise
             .then(res => {
-                // console.log('into promise get Setting')
-                // wx.navigateTo({
-                //     url: '/pages/authorization/authorizaion',
-                // })
+                console.log('login result');
+                console.log(res)
             })
     },
 

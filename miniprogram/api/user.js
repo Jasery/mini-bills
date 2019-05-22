@@ -8,7 +8,8 @@ export function register(userInfo) {
         data: {
             userInfo: userInfo,
             isAdmin: false,
-            lastLoginTime: new Date()
+            lastLoginTime: new Date(),
+            messages: []
         }
     })
 }
@@ -27,15 +28,17 @@ export function getOpenId() {
 
 export function login(userId) {
     let userData = {};
-    usersDb.doc(userId).get()
+    return usersDb.doc(userId).get()
         .then(res => {
             let user = res.data;
+            userData.isAdmin = user.isAdmin
+            userData.messages = user.messages
             if (user.groupId) {
                 return groupDb.doc(user.groupId).get()
             }
         })
         .then(res => {
-            if (res.data) {
+            if (res && res.data) {
                 userData.groupInfo = res.data;
                 return usersDb.where({
                     _id: _.in(res.data.members)
@@ -43,11 +46,29 @@ export function login(userId) {
             }
         })
         .then(res => {
-            if (res.data) {
+            if (res && res.data) {
                 userData.members = res.data;
             }
-        })
-        .then(() => {
             return Promise.resolve(userData);
+        })
+}
+
+export function clearMessage(userId, messageId) {
+    return usersDb.doc(userId).get()
+        .then(res => {
+            if (res.data) {
+                let messages = res.data.messages;
+                messages.filter(message => message.id !== messageId);
+                return usersDb.doc(userId).update({
+                    data: {
+                        messages: messages
+                    }
+                });
+            } else {
+                return Promise.reject({
+                    code: 1,
+                    msg: 'user not found'
+                });
+            }
         })
 }
