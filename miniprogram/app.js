@@ -2,27 +2,34 @@
 
 import config from './utils/config'
 import './libs/wxPromise'
-import { login } from './api/index';
+import { login, getOpenId } from './api/index';
 
 App({
-    onLaunch: function() {
+    onLaunch: function () {
+        this.globalData = {};
 
-        if (!wx.cloud) {
-            console.error('请使用 2.2.3 或以上的基础库以使用云能力')
-        } else {}
-
-        if (!wx.getStorageSync('userInfo')) {
-            console.log('meiyou storage')
-            wx.navigateTo({
-                url: '/pages/authorization/authorizaion',
+        let loginPromise = getOpenId()
+            .then(openId => {
+                this.globalData.openId = openId;
+                return login(openId)
             })
-            return;
-        }
-        console.log('before login')
-        let loginPromise = login(wx.getStorageSync('userId'))
-
-        this.globalData = {
-            loginPromise
-        }
+            .then(res => {
+                console.log('login success')
+                console.log(res)
+                this.globalData.userInfo = res.userInfo
+                this.globalData.isAdmin = res.isAdmin
+                this.globalData.messages = res.messages
+                this.globalData.groupInfo = res.groupInfo
+                this.globalData.members = res.members
+                this.globalData.userId = res.userId
+            })
+            .catch(err => {
+                wx.navigateTo({
+                    url: '/pages/authorization/authorizaion',
+                })
+                console.log('get open id failed')
+                console.log(err)
+            })
+        this.globalData.loginPromise = loginPromise;
     }
 })

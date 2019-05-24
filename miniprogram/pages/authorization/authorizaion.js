@@ -1,6 +1,6 @@
-import { register } from '../../api/index';
+import { register, login, getOpenId } from '../../api/index';
 
-// miniprogram/pages/authorization/authorizaion.js
+const app = getApp();
 
 Page({
 
@@ -18,15 +18,21 @@ Page({
 
     },
     onGetUserInfo(res) {
-        console.log('on get userINfo')
-        console.log(res)
         if (res.detail && res.detail.userInfo) {
             wx.setStorageSync('userInfo', res.detail.userInfo);
-            console.log('before regist')
             register(res.detail.userInfo)
                 .then(res => {
                     wx.setStorageSync('userId', res._id)
                     wx.navigateBack({ delta: 1 })
+
+                    app.globalData.loginPromise = getOpenId()
+                        .then(openId => {
+                            return login(openId)
+                        })
+                        .catch(err => {
+                            console.log('get open id failed')
+                            console.log(err)
+                        })
                 })
                 .catch(err => {
                     console.log(err)

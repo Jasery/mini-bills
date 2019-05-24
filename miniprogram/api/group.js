@@ -22,6 +22,15 @@ export function createGroup(userId, name, intro) {
                 }
             })
         })
+        .then(res => {
+            return userDb.doc(userId)
+                .update({
+                    data: {
+                        groupId: res._id,
+                        isAdmin: true
+                    }
+                })
+        })
 }
 
 
@@ -65,5 +74,28 @@ export function acceptJoinGroup(admin, joinUserId, groupId) {
                         members: _.push(joinUserId)
                     }
                 })
+        })
+}
+
+export function getGroupInfo(groupId) {
+    let groupData = {};
+    return groupDb.doc(groupId).get()
+        .then(res => {
+            let groupInfo = res.data;
+            if (!groupInfo) {
+                return Promise.reject({
+                    code: 1,
+                    msg: 'group not found'
+                })
+            } else {
+                groupData.groupInfo = groupInfo;
+                return groupInfo;
+            }
+        })
+        .then(groupInfo => userDb.doc(groupInfo.admin).get())
+        .then(res => {
+            let adminInfo = res.data;
+            groupData.adminInfo = adminInfo;
+            return groupData
         })
 }

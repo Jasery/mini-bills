@@ -1,2 +1,12 @@
 <!--miniprogram/pages/bills/bills.wxml-->
-<text>miniprogram/pages/bills/bills.wxml</text>
+
+
+
+<view wx:if="{{isShowGroupTips}}">
+    <view class=''>
+        你还没有加入任何群组
+    </view>
+    <view class=''>
+        请到群组页面创建或加入一个
+    </view>
+</view>

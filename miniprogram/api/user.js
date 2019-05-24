@@ -1,7 +1,8 @@
 import db from "./db";
-
+const _ = db.command
 const usersDb = db.collection('user')
 const groupDb = db.collection('group')
+
 
 export function register(userInfo) {
     return usersDb.add({
@@ -26,13 +27,28 @@ export function getOpenId() {
     })
 }
 
-export function login(userId) {
+export function login(openId) {
     let userData = {};
-    return usersDb.doc(userId).get()
+    let app = getApp();
+    return usersDb.where({
+            _openid: openId
+        }).get()
         .then(res => {
-            let user = res.data;
+            let user = res.data.length > 0 && res.data[0];
+            if (!user) {
+                return Promise.reject({
+                    code: 1,
+                    msg: 'user not found'
+                })
+            }
             userData.isAdmin = user.isAdmin
             userData.messages = user.messages
+            userData.userInfo = user.userInfo
+            userData.userId = user._id;
+            app.globalData.userInfo = userData.userInfo
+            app.globalData.isAdmin = userData.isAdmin
+            app.globalData.messages = userData.messages
+            app.globalData.userId = userData.userId
             if (user.groupId) {
                 return groupDb.doc(user.groupId).get()
             }
@@ -40,15 +56,18 @@ export function login(userId) {
         .then(res => {
             if (res && res.data) {
                 userData.groupInfo = res.data;
+                app.globalData.groupInfo = userData.groupInfo
                 return usersDb.where({
                     _id: _.in(res.data.members)
-                })
+                }).get()
             }
         })
         .then(res => {
             if (res && res.data) {
                 userData.members = res.data;
             }
+            app.globalData.members = userData.members
+
             return Promise.resolve(userData);
         })
 }

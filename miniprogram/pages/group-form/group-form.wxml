@@ -1,0 +1,12 @@
+<!-- miniprogram/pages/group-form/group-form.wxml -->
+<!-- <form bindsubmit="bindFormSubmit"> -->
+    <wux-cell-group title="请填写群组信息">
+        <wux-cell hover-class="none">
+            <wux-textarea name="name" rows="1" label="名称"  bind:change="onNameInput"/>
+        </wux-cell>
+        <wux-cell hover-class="none">
+            <wux-textarea name="intro" rows="3" label="介绍" placeholder="简短介绍群组" bind:change="onIntroInput"/>
+        </wux-cell>
+    </wux-cell-group>
+    <wux-button style="margin-top: 10rpx" block type="positive" bind:tap="submit">提交</wux-button>
+<!-- </form> -->

@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "wux-button": "../../components/wux/button/index",
+    "wux-loading": "../../components/wux/loading/index"
+  }
 }

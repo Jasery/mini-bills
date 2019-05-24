@@ -1,2 +1,5 @@
-<!--miniprogram/pages/group/group.wxml-->
-<text>miniprogram/pages/group/group.wxml</text>
+<!-- miniprogram/pages/group/group.wxml -->
+<view class='' wx:if="{{isShowCreate}}">
+    <view class=''>您还没加入任何一个群组</view>
+    <wux-button block type="positive" bindtap="toCreateForm">创建一个</wux-button>
+</view>

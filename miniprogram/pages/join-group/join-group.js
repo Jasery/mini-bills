@@ -1,48 +1,43 @@
-// miniprogram/pages/group/group.js
+import { getGroupInfo } from "../../api/index";
 
-const app = getApp();
-
-
+// miniprogram/pages/join-group/join-group.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isShowCreate: false,
-    groupMembers: [],
-    isShowCreateForm: false,
+    groupInfo: {},
+    adminInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.joinGroupId) {
+      getGroupInfo(options.joinGroupId)
+        .then(groupData => {
+          this.setData({
+            groupInfo: groupData.groupInfo,
+            adminInfo: groupData.adminInfo
+          })
+        })
+    }
   },
-  toCreateForm() {
-    wx.navigateTo({
-      url: '/pages/group-form/group-form',
-    })
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('into group onshow')
-    if (app.globalData.groupInfo) {
-      console.log('groupInfo', app.globalData.groupInfo)
-      console.log('members', app.globalData.members)
-      this.setData({
-        groupMembers: app.globalData.members,
-        isShowCreate: false
-      })
-    } else {
-      console.log('no gorup info')
-      this.setData({
-        isShowCreate: true
-      });
-    }
+
   },
 
   /**
