@@ -5,6 +5,10 @@
     "wux-popup": "../../components/wux/popup/index",
     "wux-cell": "../../components/wux/cell/index",
     "wux-cell-group": "../../components/wux/cell-group/index",
-    "wux-textarea": "../../components/wux/textarea/index"
+    "wux-textarea": "../../components/wux/textarea/index",
+    "wux-white-space": "../../components/wux/white-space/index",
+    "wux-wing-blank": "../../components/wux/wing-blank/index",
+    "wux-avatar": "../../components/wux/avatar/index",
+    "wux-fab-button": "../../components/wux/fab-button/index"
   }
 }

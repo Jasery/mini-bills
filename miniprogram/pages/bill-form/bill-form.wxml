@@ -1,0 +1,24 @@
+<!-- miniprogram/pages/bill-form/bill-form.wxml -->
+<wux-toast id="wux-toast" />
+<view class=''>
+    <wux-cell-group title="账单信息">
+        <wux-cell hover-class="none">
+            <wux-input label="项目" placeholder="请输入账单项目" name="title" bind:change="onTitleChange" />
+        </wux-cell>
+        <wux-cell hover-class="none">
+            <wux-input label="金额" extra="￥" type="digit" name="money" bind:change="onMoneyChange" />
+        </wux-cell>
+        <wux-cell hover-class="none">
+            <wux-input label="备注" placeholder="请输入备注" name="remark" bind:change="onRemarkChange" />
+        </wux-cell>
+        <wux-cell hover-class="none"></wux-cell>
+    </wux-cell-group>
+    <wux-cell-group title="参与人员">
+        <wux-cell hover-class="none" style="display:flex">
+            <view class='' style="display:inline-block" wx:for="{{members}}" wx:key="{{index}}">
+                <wux-tag bind:tap="onParticipantClick" color="{{item.isSelected ? '#108e99': 'blue'}}" data-index="{{index}}">{{item.userInfo.nickName}}</wux-tag>
+            </view>
+        </wux-cell>
+    </wux-cell-group>
+    <wux-button style="margin-top: 10rpx" block type="positive" bind:tap="submit">提交</wux-button>
+</view>

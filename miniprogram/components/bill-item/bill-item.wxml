@@ -1,2 +1,21 @@
-<!--components/bill-item/bill-item.wxml-->
-<text>components/bill-item/bill-item.wxml</text>
+<!-- components/bill-item/bill-item.wxml -->
+<view>
+    <wux-wing-blank size="default">
+        <wux-card title="{{bill.title}}" extra="{{bill.money + '￥'}}" thumb="{{bill.userInfo.avatarUrl}}">
+            <view slot="body">
+                <view class=''>{{bill.remark}}</view>
+                <wux-white-space size="large" />
+                <view class=''>
+                    <view class='' style="display:inline-block" wx:for="{{bill.participants}}" wx:for-index="idx" wx:for-item="participant" wx:key="{{idx}}">
+                        <wux-tag color="#108e99" data-index="{{index}}">
+                            {{participant.userInfo.nickName}}
+                        </wux-tag>
+                    </view>
+                </view>
+            </view>
+            <view slot="footer">
+                <wux-timeago to="{{ bill.time }}" refreshable />
+            </view>
+        </wux-card>
+    </wux-wing-blank>
+</view>

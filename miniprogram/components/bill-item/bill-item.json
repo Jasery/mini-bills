@@ -1,4 +1,10 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "wux-card": "../wux/card/index",
+    "wux-wing-blank": "../wux/wing-blank/index",
+    "wux-tag": "../wux/tag/index",
+    "wux-timeago": "../wux/timeago/index",
+    "wux-white-space": "../wux/white-space/index"
+  }
 }

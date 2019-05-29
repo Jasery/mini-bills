@@ -56,6 +56,7 @@ export function login(openId) {
         .then(res => {
             if (res && res.data) {
                 userData.groupInfo = res.data;
+                app.globalData.groupId = res.data._id;
                 app.globalData.groupInfo = userData.groupInfo
                 return usersDb.where({
                     _id: _.in(res.data.members)

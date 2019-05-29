@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "wux-button": "../../components/wux/button/index",
-    "wux-loading": "../../components/wux/loading/index"
+    "wux-loading": "../../components/wux/loading/index",
+    "wux-fab-button": "../../components/wux/fab-button/index",
+    "bill-item": "../../components/bill-item/bill-item",
+    "wux-white-space": "../../components/wux/white-space/index"
   }
 }

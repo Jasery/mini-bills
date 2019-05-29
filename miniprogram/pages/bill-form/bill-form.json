@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "wux-cell-group": "../../components/wux/cell-group/index",
+    "wux-cell": "../../components/wux/cell/index",
+    "wux-input": "../../components/wux/input/index",
+    "wux-tag": "../../components/wux/tag/index",
+    "wux-button": "../../components/wux/button/index"
+  }
+}

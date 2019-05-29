@@ -1,1 +1,5 @@
 /* miniprogram/pages/bills/bills.wxss */
+
+page {
+    background-color: #f6f6f6;
+}

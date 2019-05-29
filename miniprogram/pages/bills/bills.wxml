@@ -1,12 +1,12 @@
-<!--miniprogram/pages/bills/bills.wxml-->
-
-
-
+<!-- miniprogram/pages/bills/bills.wxml -->
 <view wx:if="{{isShowGroupTips}}">
-    <view class=''>
-        你还没有加入任何群组
-    </view>
-    <view class=''>
-        请到群组页面创建或加入一个
+    <view class=''>你还没有加入任何群组</view>
+    <view class=''>请到群组页面创建或加入一个</view>
+</view>
+<view class='bills-content'>
+    <view class='' wx:for="{{billList}}" wx:key="{{indx}}">
+        <wux-white-space size="large" />
+        <bill-item bill="{{item}}"></bill-item>
     </view>
 </view>
+<wux-fab-button wx:if="{{!isShowGroupTips}}" position="bottomRight" theme="balanced" direction="vertical" buttons="{{ buttons }}" bind:click="onClick" />

@@ -3,3 +3,22 @@
     <view class=''>您还没加入任何一个群组</view>
     <wux-button block type="positive" bindtap="toCreateForm">创建一个</wux-button>
 </view>
+<view class='' wx:if="{{!isShowCreate}}">
+    <view class='' wx:for="{{groupMembers}}" wx:key="{{index}}">
+        <wux-white-space size="large" />
+        <wux-wing-blank size="large">
+            <view class='member-content'>
+                <image class="avatar" src="{{item.userInfo.avatarUrl}}" />
+                <view class=''>{{item.userInfo.nickName}}</view>
+            </view>
+        </wux-wing-blank>
+    </view>
+</view>
+
+<wux-fab-button wx:if="{{!isShowCreate}}"
+    position="bottomRight" 
+    theme="balanced" 
+    direction="vertical" 
+    buttons="{{ buttons }}"
+    bind:click="onClick" 
+    />

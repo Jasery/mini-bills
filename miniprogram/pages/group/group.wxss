@@ -1,1 +1,13 @@
 /* miniprogram/pages/group/group.wxss */
+
+.avatar {
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50%;
+}
+
+.member-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

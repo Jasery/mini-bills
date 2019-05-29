@@ -1,0 +1,24 @@
+/* miniprogram/pages/settle-view/settle-view.wxss */
+
+.settle-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.confirm {
+    border: 2rpx solid #387ef5;
+}
+
+.settle-item image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+
+.share {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+

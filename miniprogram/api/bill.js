@@ -5,7 +5,8 @@ const billsDb = db.collection('bill')
 export function getBills(groupId) {
     return billsDb.where({
         groupId: groupId
-    }).get();
+    })
+    .get()
 }
 
 export function createBill(billInfo) {

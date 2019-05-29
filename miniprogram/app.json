@@ -6,7 +6,9 @@
     "pages/my/my",
     "pages/authorization/authorizaion",
     "pages/join-group/join-group",
-    "pages/group-form/group-form"
+    "pages/group-form/group-form",
+    "pages/bill-form/bill-form",
+    "pages/settle-view/settle-view"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

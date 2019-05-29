@@ -1,0 +1,24 @@
+<!-- miniprogram/pages/settle-view/settle-view.wxml -->
+<view class='' wx:for="{{settleList}}" wx:key="{{index}}">
+    <wux-white-space size="large" />
+    <view class='{{item.isConfirm ? "confirm settle-item" : "settle-item"}}'>
+        <image src="{{item.form.userInfo.avatarUrl}}" />
+        <view class='money'>
+            <view class=''>{{item.money + "￥"}}</view>
+            <view class=''>====></view>
+        </view>
+        <image src="{{item.to.userInfo.avatarUrl}}" />
+    </view>
+    <wux-white-space size="large" />
+</view>
+<wux-button wx:if="{{isShowBegin}}" block type="positive" bind:tap="beginSettlement">
+    开始结账
+</wux-button>
+<wux-button wx:if="{{!isShowBegin}}" block type="positive" bind:tap="confirmSettlement">
+    确认结账
+</wux-button>
+<wux-popup visible="{{ isShowShare }}" title="确认结算">
+    <view slot="footer" class="share">
+        <button type="primary" open-type="share">分享给组员</button>
+    </view>
+</wux-popup>
