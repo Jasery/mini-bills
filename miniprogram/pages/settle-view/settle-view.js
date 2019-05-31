@@ -25,7 +25,7 @@ Page({
       .then(res => {
         console.log('after get bills....')
         console.log(res);
-        this.settleHander(res.data)
+        return this.settleHander(res.data)
       })
       .then(() => {
         let isShowBegin = false;
@@ -86,7 +86,7 @@ Page({
       })
       .filter(settleItem => !settleItem.form.isAdmin || !settleItem.to.isAdmin)
 
-    getSettleInfo(app.globalData.groupId)
+    return getSettleInfo(app.globalData.groupId)
       .then(settleInfo => {
         if (settleInfo) {
           for (const confirmMember of settleInfo.confirmMembers) {
@@ -124,26 +124,33 @@ Page({
         //   title: '已经开始结算，在结清前无法添加新账单'
         // })
         this.setData({
-          isShowShare: true
+          isShowShare: true,
+          isShowBegin: false
         })
       })
   },
 
   confirmSettlement() {
     if (app.globalData.isAdmin) {
-      if (this.data.settleInfo.confirmMembers.length === app.globalData.members.length) {
+      if (this.data.settleInfo.confirmMembers.length === this.data.settleList.length + 1) {
         wx.showLoading();
         settlementClear(app.globalData.groupId)
-          .then(() => {
+          .then((res) => {
+            console.log('settlement clear ...')
+            console.log(res);
             wx.hideLoading();
             wx.showToast({
               title: '账单已结算完成'
             })
             setTimeout(() => {
               wx.switchTab({
-                url: '/page/bills/bills'
+                url: '/pages/bills/bills'
               })
             }, 1500);
+          })
+          .catch(err => {
+            console.log('settle clear failed');
+            console.log(err);
           })
       } else {
         wx.showToast({
@@ -159,6 +166,7 @@ Page({
           wx.showToast({
             title: '账单已确认'
           })
+          this.onLoad();
         })
         .catch(err => {
           console.log('confirm failed')
