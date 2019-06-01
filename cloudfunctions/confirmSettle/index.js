@@ -10,16 +10,19 @@ const _ = db.command;
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
-  let openId = wxContext.OPENID;
+  let openId = event.openId || wxContext.OPENID;
   let groupId = event.groupId;
+  console.log('open id', openId);
+  console.log('groupId ', groupId);
   let settleInfos = await db.collection('settle')
     .where({
-      groupId
+      groupId: groupId,
+      isClear: false
     })
     .get()
-  console.log('settle res')
-  console.log(settleInfos)
   let settleInfo = settleInfos.data[0];
+  console.log('settle info')
+  console.log(settleInfo)
   if (!settleInfo) {
     return {
       code: 0,
@@ -27,7 +30,7 @@ exports.main = async (event, context) => {
     }
   }
   if (settleInfo.confirmMembers.indexOf(openId) < 0) {
-    console.log('before ')
+    console.log('before update ')
     await db.collection('settle')
       .doc(settleInfo._id)
       .update({
@@ -35,6 +38,7 @@ exports.main = async (event, context) => {
           confirmMembers: _.push(openId)
         }
       });
+    console.log('update success.');
   }
 
   return {

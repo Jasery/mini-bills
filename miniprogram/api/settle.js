@@ -46,7 +46,8 @@ export function settlementClear(groupId) {
 
 export function getSettleInfo(groupId) {
     return settleDb.where({
-        groupId
+        groupId: groupId,
+        isClear: false
     }).get()
         .then(res => {
             if (res.data) {

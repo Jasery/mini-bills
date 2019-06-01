@@ -70,6 +70,12 @@ Page({
         switch (index) {
             case 0:
                 // 添加账单
+                if (app.globalData.groupInfo.isSettlement) {
+                    wx.showToast({
+                        title: '正在结算中，请完成结算后再添加账单'
+                    })
+                    return;
+                }
                 wx.navigateTo({
                     url: '/pages/bill-form/bill-form',
                 })

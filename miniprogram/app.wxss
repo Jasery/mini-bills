@@ -6,3 +6,9 @@
   align-items: center;
   box-sizing: border-box;
 } 
+.comming-soon {
+  text-align: center;
+  font-size: 80rpx;
+  padding-top: 100rpx;
+  font-weight: bold;
+}
