@@ -158,6 +158,12 @@ Page({
         })
       }
     } else {
+      if (!this.data.settleInfo) {
+        wx.showLoading({
+          title: '管理员尚未开始结算'
+        })
+        return;
+      }
       console.log('before confirm settle')
       confirmSettle(app.globalData.groupId)
         .then((res) => {
@@ -166,7 +172,11 @@ Page({
           wx.showToast({
             title: '账单已确认'
           })
-          this.onLoad();
+          setTimeout(() => {
+            wx.switchTab({
+              url: '/pages/bills/bills'
+            })
+          }, 1500);
         })
         .catch(err => {
           console.log('confirm failed')

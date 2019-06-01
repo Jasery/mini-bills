@@ -15,6 +15,10 @@ Page({
                 label: '添加账单',
                 icon,
             },
+            {
+                label: '结算',
+                icon
+            }
         ]
     },
 
@@ -34,20 +38,6 @@ Page({
         let that = this;
         app.globalData.loginPromise
             .then(res => {
-                if (app.globalData.isAdmin) {
-                    this.setData({
-                        buttons: [
-                            {
-                                label: '添加账单',
-                                icon,
-                            },
-                            {
-                                label: '结算',
-                                icon
-                            }
-                        ]
-                    })
-                }
                 console.log('bills page after login')
                 if (app.globalData.groupInfo) {
                     that.refreshBills();
