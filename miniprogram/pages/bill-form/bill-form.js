@@ -12,7 +12,8 @@ Page({
     money: 0,
     remark: '',
     members: [],
-    participants: []
+    participants: [],
+    moneyError: false
   },
 
   /**
@@ -51,6 +52,14 @@ Page({
       return
     }
 
+    if (!this.isVaildMoney(this.data.money)) {
+      wx.showToast({
+        title: '请输入正确的金额',
+        icon: 'loading'
+      })
+      return
+    }
+
     let participants = this.data.members
       .filter(item => item.isSelected)
       .map(item => item._openid)
@@ -70,7 +79,6 @@ Page({
       groupId: app.globalData.groupId,
       participants: participants
     }
-    console.log('bill info', billInfo)
     createBill(billInfo)
       .then(res => {
         wx.showToast({
@@ -81,18 +89,24 @@ Page({
       })
   },
   onTitleChange(e) {
-    console.log('on title change', e.detail.value)
     this.data.title = e.detail.value;
   },
 
   onMoneyChange(e) {
-    console.log('on money change', e.detail.value)
-    this.data.money = e.detail.value
+    let value = e.detail.value;
+    this.data.money = e.detail.value;
+    let isVaildMoney = this.isVaildMoney(value);
+    this.setData({
+      moneyError: !isVaildMoney
+    })
   },
 
   onRemarkChange(e) {
-    console.log('on remark change', e.detail.value)
     this.data.remark = e.detail.value
+  },
+
+  isVaildMoney(money) {
+    return /^\d{1,4}(\.\d{1,2})?$/.test(money);
   },
 
   /**
@@ -102,25 +116,4 @@ Page({
 
   },
 
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

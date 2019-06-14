@@ -6,7 +6,7 @@
             <wux-input label="项目" placeholder="请输入账单项目" name="title" bind:change="onTitleChange" />
         </wux-cell>
         <wux-cell hover-class="none">
-            <wux-input label="金额" extra="￥" type="digit" name="money" bind:change="onMoneyChange" />
+            <wux-input label="金额" extra="￥" type="digit" error="{{ moneyError }}" name="money" bind:change="onMoneyChange" />
         </wux-cell>
         <wux-cell hover-class="none">
             <wux-input label="备注" placeholder="请输入备注" name="remark" bind:change="onRemarkChange" />
