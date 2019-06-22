@@ -1,9 +1,11 @@
 {
-  "usingComponents": {
-    "wux-cell-group": "../../components/wux/cell-group/index",
-    "wux-cell": "../../components/wux/cell/index",
-    "wux-input": "../../components/wux/input/index",
-    "wux-tag": "../../components/wux/tag/index",
-    "wux-button": "../../components/wux/button/index"
-  }
+    "usingComponents": {
+        "wux-cell-group": "../../components/wux/cell-group/index",
+        "wux-cell": "../../components/wux/cell/index",
+        "wux-input": "../../components/wux/input/index",
+        "wux-tag": "../../components/wux/tag/index",
+        "wux-upload": "../../components/wux/upload/index",
+        "wux-button": "../../components/wux/button/index",
+        "wux-textarea": "../../components/wux/textarea/index"
+    }
 }

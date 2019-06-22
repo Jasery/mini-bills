@@ -10,3 +10,4 @@
     </view>
 </view>
 <wux-fab-button wx:if="{{!isShowGroupTips}}" position="bottomRight" theme="balanced" direction="vertical" buttons="{{ buttons }}" bind:click="onClick" />
+<wux-toast id="wux-toast" />

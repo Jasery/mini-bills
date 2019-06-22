@@ -4,6 +4,7 @@
     "wux-loading": "../../components/wux/loading/index",
     "wux-fab-button": "../../components/wux/fab-button/index",
     "bill-item": "../../components/bill-item/bill-item",
-    "wux-white-space": "../../components/wux/white-space/index"
+    "wux-white-space": "../../components/wux/white-space/index",
+    "wux-toast": "../../components/wux/toast/index"
   }
 }

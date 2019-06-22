@@ -1,1 +1,3 @@
 /* components/bill-item/bill-item.wxss */
+
+@import '../wux/styles/index.wxss'

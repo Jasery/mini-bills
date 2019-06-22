@@ -1,7 +1,9 @@
 // miniprogram/pages/bill-form/bill-form.js
 import { createBill } from "../../api/index";
+
+import { uploadFile } from '../../utils/index';
+
 const app = getApp();
-import { $wuxToast } from '../../components/wux/index'
 Page({
 
   /**
@@ -13,7 +15,8 @@ Page({
     remark: '',
     members: [],
     participants: [],
-    moneyError: false
+    moneyError: false,
+    files: []
   },
 
   /**
@@ -79,13 +82,26 @@ Page({
       groupId: app.globalData.groupId,
       participants: participants
     }
-    createBill(billInfo)
+
+    wx.showLoading();
+    Promise.all(this.data.files.map(file => uploadFile(app.globalData.groupId, file)))
+      .then(fileIds => {
+        console.log('upload result')
+        console.log(fileIds);
+        billInfo.fileIds = fileIds;
+        return createBill(billInfo);
+      })
       .then(res => {
         wx.showToast({
           title: '账单创建成功',
           mask: true
         })
         wx.navigateBack({ delta: 1 })
+      })
+      .catch(err => {
+        // TODO: 
+        console.log('bill submit failed');
+        console.log(err);
       })
   },
   onTitleChange(e) {
@@ -115,5 +131,18 @@ Page({
   onShow: function () {
 
   },
+  onFileChange(e) {
+    const { fileList } = e.detail
+    this.setData({
+      files: fileList.map(file => file.url)
+    });
+  },
 
+  onPreview(e) {
+    const { file, fileList } = e.detail
+    wx.previewImage({
+      current: file.url,
+      urls: fileList.map((n) => n.url),
+    })
+  }
 })

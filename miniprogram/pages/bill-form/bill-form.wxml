@@ -9,14 +9,31 @@
             <wux-input label="金额" extra="￥" type="digit" error="{{ moneyError }}" name="money" bind:change="onMoneyChange" />
         </wux-cell>
         <wux-cell hover-class="none">
-            <wux-input label="备注" placeholder="请输入备注" name="remark" bind:change="onRemarkChange" />
+            <!-- <wux-input label="备注" placeholder="请输入备注" name="remark" bind:change="onRemarkChange" /> -->
+            <wux-textarea autoHeight label="备注" placeholder="请输入备注" name="remark" bind:change="onRemarkChange" />
         </wux-cell>
-        <wux-cell hover-class="none"></wux-cell>
+    </wux-cell-group>
+    <wux-cell-group title="上传附件">
+        <wux-cell hover-class="none">
+            <wux-upload 
+                listType="picture-card"
+                max="3" 
+                count="1" 
+                url=" " 
+                sizeType="['original']"
+                bind:change="onFileChange" 
+                bind:preview="onPreview"
+                >
+                <text>Upload</text>
+            </wux-upload>
+        </wux-cell>
     </wux-cell-group>
     <wux-cell-group title="参与人员">
         <wux-cell hover-class="none" style="display:flex">
             <view class='' style="display:inline-block" wx:for="{{members}}" wx:key="{{index}}">
-                <wux-tag bind:tap="onParticipantClick" color="{{item.isSelected ? '#108e99': 'blue'}}" data-index="{{index}}">{{item.userInfo.nickName}}</wux-tag>
+                <wux-tag bind:tap="onParticipantClick" color="{{item.isSelected ? '#108e99': 'blue'}}" data-index="{{index}}">
+                    {{item.userInfo.nickName}}
+                </wux-tag>
             </view>
         </wux-cell>
     </wux-cell-group>
