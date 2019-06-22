@@ -1,9 +1,10 @@
 {
-  "usingComponents": {
-    "wux-button": "../../components/wux/button/index",
-    "wux-popup": "../../components/wux/popup/index",
-    "wux-cell": "../../components/wux/cell/index",
-    "wux-cell-group": "../../components/wux/cell-group/index",
-    "wux-textarea": "../../components/wux/textarea/index"
-  }
+    "navigationBarTitleText": "创建群组",
+    "usingComponents": {
+        "wux-button": "../../components/wux/button/index",
+        "wux-popup": "../../components/wux/popup/index",
+        "wux-cell": "../../components/wux/cell/index",
+        "wux-cell-group": "../../components/wux/cell-group/index",
+        "wux-textarea": "../../components/wux/textarea/index"
+    }
 }

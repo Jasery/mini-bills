@@ -1,4 +1,5 @@
 {
+    "navigationBarTitleText": "添加账单",
     "usingComponents": {
         "wux-cell-group": "../../components/wux/cell-group/index",
         "wux-cell": "../../components/wux/cell/index",

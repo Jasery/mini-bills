@@ -1,9 +1,10 @@
 {
-  "usingComponents": {
-    "wux-cell-group": "../../components/wux/cell-group/index",
-    "wux-cell": "../../components/wux/cell/index",
-    "wux-button": "../../components/wux/button/index",
-    "wux-popup": "../../components/wux/popup/index",
-    "wux-white-space": "../../components/wux/white-space/index"
-  }
+    "navigationBarTitleText": "结算",
+    "usingComponents": {
+        "wux-cell-group": "../../components/wux/cell-group/index",
+        "wux-cell": "../../components/wux/cell/index",
+        "wux-button": "../../components/wux/button/index",
+        "wux-popup": "../../components/wux/popup/index",
+        "wux-white-space": "../../components/wux/white-space/index"
+    }
 }

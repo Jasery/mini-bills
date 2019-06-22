@@ -1,3 +1,3 @@
 export default {
-    cloudEnv: 'test-1e22ad'
+    cloudEnv: 'cloud-88c698'
 }

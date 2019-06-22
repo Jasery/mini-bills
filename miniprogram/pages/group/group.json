@@ -1,14 +1,15 @@
 {
-  "usingComponents": {
-    "wux-icon": "../../components/wux/icon/index",
-    "wux-button": "../../components/wux/button/index",
-    "wux-popup": "../../components/wux/popup/index",
-    "wux-cell": "../../components/wux/cell/index",
-    "wux-cell-group": "../../components/wux/cell-group/index",
-    "wux-textarea": "../../components/wux/textarea/index",
-    "wux-white-space": "../../components/wux/white-space/index",
-    "wux-wing-blank": "../../components/wux/wing-blank/index",
-    "wux-avatar": "../../components/wux/avatar/index",
-    "wux-fab-button": "../../components/wux/fab-button/index"
-  }
+    "navigationBarTitleText": "群组信息",
+    "usingComponents": {
+        "wux-icon": "../../components/wux/icon/index",
+        "wux-button": "../../components/wux/button/index",
+        "wux-popup": "../../components/wux/popup/index",
+        "wux-cell": "../../components/wux/cell/index",
+        "wux-cell-group": "../../components/wux/cell-group/index",
+        "wux-textarea": "../../components/wux/textarea/index",
+        "wux-white-space": "../../components/wux/white-space/index",
+        "wux-wing-blank": "../../components/wux/wing-blank/index",
+        "wux-avatar": "../../components/wux/avatar/index",
+        "wux-fab-button": "../../components/wux/fab-button/index"
+    }
 }
